@@ -1,0 +1,26 @@
+table {
+  width: 100%;
+}
+
+mat-icon {
+  cursor: pointer;
+}
+
+th.mat-sort-header-sorted {
+  color: black;
+}
+
+.file-input {
+  display: none;
+}
+
+.file-upload {
+  height: 58px;
+  padding-left: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.error-msg {
+  color: red;
+}

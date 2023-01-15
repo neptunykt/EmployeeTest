@@ -1,0 +1,241 @@
+<div class="container">
+  <form class="mat-dialog-content" (ngSubmit)="updateEmployee()" #employeeForm="ngForm">
+    <div class="row">
+      <mat-form-field style="width: 17vw; padding: 0 5px 0 5px">
+        <input
+          matInput
+          name="id"
+          [(ngModel)]="data.id"
+          disabled
+          placeholder="id"
+        />
+      </mat-form-field>
+      <mat-form-field style="width: 17vw; padding: 0 5px 0 5px">
+        <input
+          matInput
+          [(ngModel)]="data.payRollNumber"
+          name="payRollNumber"
+          maxlength="6"
+          required
+          placeholder="PayRollNumber"
+          #payRollNumber="ngModel"
+        />
+        <div class="error-msg" *ngIf="payRollNumber.touched">
+          <p *ngIf="payRollNumber.errors?.required">
+            PayRollNumber is a required field
+          </p>
+        </div>
+      </mat-form-field>
+    </div>
+    <div class="row">
+      <mat-form-field style="width: 17vw; padding: 0 5px 0 5px">
+        <input
+          matInput
+          [(ngModel)]="data.surname"
+          name="surname"
+          placeholder="Surname"
+          #surname="ngModel"
+          pattern="[a-zA-Z]+"
+          maxlength="255"
+          required
+        />
+        <div class="error-msg" *ngIf="surname.touched">
+          <p *ngIf="surname.errors?.required">Surname is a required field</p>
+          <p *ngIf="surname.errors?.pattern">This is not a valid Surname</p>
+        </div>
+      </mat-form-field>
+      <mat-form-field style="width: 17vw; padding: 0 5px 0 5px">
+        <input
+          matInput
+          [(ngModel)]="data.forenames"
+          name="forenames"
+          placeholder="ForeNames"
+          #forenames="ngModel"
+          pattern="[a-zA-Z]+"
+          maxlength="255"
+          required
+        />
+        <div class="error-msg" *ngIf="forenames.touched">
+          <p *ngIf="forenames.errors?.required">
+            Forenames is a required field
+          </p>
+          <p *ngIf="forenames.errors?.pattern">This is not a valid ForeNames</p>
+        </div>
+      </mat-form-field>
+    </div>
+    <div class="row">
+      <mat-form-field style="width: 17vw; padding: 0 5px 0 5px">
+        <input
+          matInput
+          [(ngModel)]="data.dateOfBirth"
+          [ngModel]="data.dateOfBirth | date : 'dd/MM/yyyy'"
+          name="dateOfBirth"
+          datevalidator
+          #dateOfBirth="ngModel"
+          [textMask]="{ mask: datemask }"
+          placeholder="Date of Birth dd/MM/yyyy"
+          required
+        />
+        <div
+          *ngIf="
+            dateOfBirth.invalid && (dateOfBirth.dirty || dateOfBirth.touched)
+          "
+        >
+          <div class="error-msg" *ngIf="dateOfBirth.errors.datevalidator">
+            This is not a valid date
+          </div>
+        </div>
+      </mat-form-field>
+      <mat-form-field style="width: 17vw; padding: 0 5px 0 5px">
+        <input
+          matInput
+          [(ngModel)]="data.telephone"
+          name="telephone"
+          placeholder="Telephone"
+          #telephone="ngModel"
+          pattern="^[0-9]+$"
+          maxlength="40"
+          required
+        />
+        <div class="error-msg" *ngIf="telephone.touched">
+          <p *ngIf="telephone.errors?.required">
+            Telephone is a required field
+          </p>
+          <p *ngIf="telephone.errors?.pattern">This is not a valid Telephone</p>
+        </div>
+      </mat-form-field>
+    </div>
+    <div class="row">
+      <mat-form-field style="width: 17vw; padding: 0 5px 0 5px">
+        <input
+          matInput
+          [(ngModel)]="data.mobile"
+          pattern="^[0-9]+$"
+          maxlength="40"
+          name="mobile"
+          #mobile="ngModel"
+          placeholder="Mobile"
+          required
+        />
+        <div class="error-msg" *ngIf="mobile.touched">
+          <p *ngIf="mobile.errors?.required">Mobile is a required field</p>
+          <p *ngIf="surname.errors?.pattern">This is not a valid Mobile</p>
+        </div>
+      </mat-form-field>
+      <mat-form-field style="width: 17vw; padding: 0 5px 0 5px">
+        <input
+          matInput
+          [(ngModel)]="data.address"
+          name="address"
+          #address="ngModel"
+          placeholder="Address"
+          maxlength="255"
+          required
+        />
+        <div class="error-msg" *ngIf="address.touched">
+          <p *ngIf="address.errors?.required">Address is a required field</p>
+        </div>
+      </mat-form-field>
+    </div>
+    <div class="row">
+      <mat-form-field style="width: 17vw; padding: 0 5px 0 5px">
+        <input
+          matInput
+          [(ngModel)]="data.address2"
+          name="address2"
+          #address2="ngModel"
+          placeholder="Address2"
+          maxlength="255"
+          required
+        />
+        <div class="error-msg" *ngIf="address2.touched">
+          <p *ngIf="address2.errors?.required">Address2 is a required field</p>
+        </div>
+      </mat-form-field>
+      <mat-form-field style="width: 17vw; padding: 0 5px 0 5px">
+        <input
+          matInput
+          [(ngModel)]="data.postCode"
+          name="postCode"
+          #postCode="ngModel"
+          maxlength="40"
+          placeholder="PostCode"
+          required
+        />
+        <div class="error-msg" *ngIf="postCode.touched">
+          <p *ngIf="postCode.errors?.required">PostCode is a required field</p>
+        </div>
+      </mat-form-field>
+    </div>
+    <div class="row">
+      <mat-form-field style="width: 17vw; padding: 0 5px 0 5px">
+        <input
+          type="email"
+          matInput
+          [(ngModel)]="data.emailHome"
+          name="emailHome"
+          #emailHome="ngModel"
+          pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+          placeholder="Email Home"
+          required
+        />
+        <div
+          *ngIf="emailHome.invalid && (emailHome.dirty || emailHome.touched)"
+          class="alert alert-danger"
+        >
+          <div class="error-msg" *ngIf="emailHome.touched">
+            <p *ngIf="emailHome.errors?.required">Email is a required field</p>
+            <p *ngIf="emailHome.errors?.pattern">This is not a valid Email</p>
+          </div>
+        </div>
+      </mat-form-field>
+      <mat-form-field style="width: 17vw; padding: 0 5px 0 5px">
+        <input
+          matInput
+          datevalidator
+          [textMask]="{ mask: datemask }"
+          #startDate="ngModel"
+          [(ngModel)]="data.startDate"
+          [ngModel]="data.startDate | date : 'dd/MM/yyyy'"
+          name="startDate"
+          placeholder="Start Date"
+        />
+        <div
+          *ngIf="startDate.invalid && (startDate.dirty || startDate.touched)"
+          class="alert alert-danger"
+        >
+          <div class="error-msg" *ngIf="startDate.errors.datevalidator">
+            This is not a valid date
+          </div>
+        </div>
+      </mat-form-field>
+    </div>
+    <div mat-dialog-actions>
+      <button mat-flat-button color="accent" (click)="onNoClick()">
+        Cancel
+      </button>
+      <button
+        type="submit"
+        mat-flat-button
+        color="primary"
+        cdkFocusInitial
+        [disabled]="
+          payRollNumber.invalid ||
+          surname.invalid ||
+          forenames.invalid ||
+          dateOfBirth.invalid ||
+          telephone.invalid ||
+          mobile.invalid ||
+          address.invalid ||
+          address2.invalid ||
+          postCode.invalid ||
+          emailHome.invalid ||
+          startDate.invalid
+        "
+        [mat-dialog-close]="1"
+      >
+        Update
+      </button>
+    </div>
+  </form>
+</div>

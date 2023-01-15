@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>WebApp</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300');
+
+        html, body {
+            color: #FCFCFC;
+            font-family: 'Open Sans Condensed', sans-serif;
+            font-size: 12pt;
+            margin: 0;
+            padding: 0;
+        }
+
+        html { padding: 1rem 0 1rem; }
+
+        body { background-color: #3B91DB; }
+
+        h1, h2 {
+            margin: 0;
+            margin-top: 2rem;
+            padding: 0;
+            text-align: left;
+        }
+
+        h2 { margin-bottom: 0; }
+
+        a, span, p {
+            color: #FCFCFC;
+            font-family: 'Open Sans Condensed', sans-serif;
+        }
+
+        .wrap {
+            box-sizing: border-box;
+            margin: 0 auto;
+            padding: 1rem;
+            width: 100%;
+        }
+
+        .block { margin-top: 1rem; }
+
+        .block > a { margin-right: 3rem; }
+
+        #status pre {
+            display: block;
+            font-family: monospace;
+        }
+
+        .block label { display: block; }
+
+        .block label:after { content: ': '; }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+
+<body>
+<div id="wrap" class="wrap">
+    <h1 style="margin: 0">WebApp</h1>
+    <div class="block">
+
+    </div>
+
+    <h1>Documentation</h1>
+    <div class="block">
+        <ul>
+            <li>
+                <a href="/swagger">Swagger UI</a>
+            </li>
+        </ul>
+    </div>
+</div>
+<script>
+    const app = new Vue({
+        el: '#wrap',
+        created: function() {
+        },
+        mounted: function() {
+        },
+        data: {
+        },
+        computed: {
+        },
+        watch: {
+        },
+        methods: {
+        }
+    });
+</script>
+</body>
+
+</html>
