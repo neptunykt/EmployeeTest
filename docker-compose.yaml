@@ -13,6 +13,6 @@ services:
     image: ${DOCKER_REGISTRY-}dockersqlserver
     build:
       context: .
-      dockerfile: WebApplication/Dockerfile
+      dockerfile: WebApp/Dockerfile
     depends_on:
       - db
